@@ -1,7 +1,6 @@
-import React from 'react';
 import { TrendingUp, BarChart3 } from 'lucide-react';
 
-const ChartSection: React.FC = () => {
+export default function ChartSection() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* Chart Placeholder */}
@@ -54,4 +53,3 @@ const ChartSection: React.FC = () => {
   );
 };
 
-export default ChartSection;

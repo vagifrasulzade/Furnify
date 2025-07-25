@@ -1,5 +1,4 @@
-import React from 'react';
-import { DivideIcon as LucideIcon } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
 interface StatCardProps {
   title: string;
@@ -9,7 +8,7 @@ interface StatCardProps {
   icon: LucideIcon;
 }
 
-const StatCard: React.FC<StatCardProps> = ({ title, value, change, changeType, icon: Icon }) => {
+export default function StatCard({ title, value, change, changeType, icon: Icon }: StatCardProps) {
   return (
     <div className="bg-white rounded-xl border border-orange-100 p-6 hover:shadow-lg transition-all duration-300 hover:border-orange-200">
       <div className="flex items-center justify-between mb-4">
@@ -30,4 +29,3 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, change, changeType, i
   );
 };
 
-export default StatCard;

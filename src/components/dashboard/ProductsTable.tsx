@@ -10,8 +10,7 @@ interface Product {
   stock: number;
   status: 'Active' | 'Inactive';
 }
-
-const ProductsTable: React.FC = () => {
+export default function ProductsTable() {
   // Convert furniture products to table format and take first 6 items
   const initialProducts: Product[] = furnitureProducts.slice(0, 6).map(product => ({
     id: product.id,
@@ -201,4 +200,3 @@ const ProductsTable: React.FC = () => {
   );
 };
 
-export default ProductsTable;

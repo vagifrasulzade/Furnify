@@ -114,9 +114,9 @@ export default function Products() {
 
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-        <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-          <div className="flex items-center justify-between p-6 border-b border-orange-100">
-            <h2 className="text-xl font-bold text-gray-900">Add New Product</h2>
+        <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto mx-4">
+          <div className="flex items-center justify-between p-4 sm:p-6 border-b border-orange-100">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900">Add New Product</h2>
             <button
               onClick={() => setShowAddModal(false)}
               className="p-2 hover:bg-orange-50 rounded-lg transition-colors"
@@ -125,7 +125,7 @@ export default function Products() {
             </button>
           </div>
 
-          <form onSubmit={handleAddProduct} className="p-6 space-y-6">
+          <form onSubmit={handleAddProduct} className="p-4 sm:p-6 space-y-4 sm:space-y-6">
             {/* Image Upload Section */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">Product Image</label>
@@ -264,16 +264,16 @@ export default function Products() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Products</h1>
-          <p className="text-gray-600">Manage your product inventory ({products.length} products)</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Products</h1>
+          <p className="text-sm sm:text-base text-gray-600">Manage your product inventory ({products.length} products)</p>
         </div>
         <button 
           onClick={() => setShowAddModal(true)}
-          className="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors flex items-center space-x-2"
+          className="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors flex items-center justify-center space-x-2 w-full sm:w-auto"
         >
           <Plus className="w-4 h-4" />
           <span>Add Product</span>
@@ -281,57 +281,57 @@ export default function Products() {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white rounded-xl border border-orange-100 p-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="bg-white rounded-xl border border-orange-100 p-3 sm:p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Total Products</p>
-              <p className="text-2xl font-bold text-gray-900">{products.length}</p>
+              <p className="text-xs sm:text-sm text-gray-600">Total Products</p>
+              <p className="text-lg sm:text-2xl font-bold text-gray-900">{products.length}</p>
             </div>
-            <div className="p-3 bg-orange-100 rounded-lg">
-              <Plus className="w-6 h-6 text-orange-600" />
+            <div className="p-2 sm:p-3 bg-orange-100 rounded-lg">
+              <Plus className="w-4 h-4 sm:w-6 sm:h-6 text-orange-600" />
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-xl border border-orange-100 p-4">
+        <div className="bg-white rounded-xl border border-orange-100 p-3 sm:p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Active Products</p>
-              <p className="text-2xl font-bold text-gray-900">{products.filter(p => p.status === 'Active').length}</p>
+              <p className="text-xs sm:text-sm text-gray-600">Active Products</p>
+              <p className="text-lg sm:text-2xl font-bold text-gray-900">{products.filter(p => p.status === 'Active').length}</p>
             </div>
-            <div className="p-3 bg-green-100 rounded-lg">
-              <div className="w-6 h-6 bg-green-500 rounded-full"></div>
+            <div className="p-2 sm:p-3 bg-green-100 rounded-lg">
+              <div className="w-4 h-4 sm:w-6 sm:h-6 bg-green-500 rounded-full"></div>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-xl border border-orange-100 p-4">
+        <div className="bg-white rounded-xl border border-orange-100 p-3 sm:p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Low Stock</p>
-              <p className="text-2xl font-bold text-gray-900">{products.filter(p => (p.stock || 0) <= 10).length}</p>
+              <p className="text-xs sm:text-sm text-gray-600">Low Stock</p>
+              <p className="text-lg sm:text-2xl font-bold text-gray-900">{products.filter(p => (p.stock || 0) <= 10).length}</p>
             </div>
-            <div className="p-3 bg-yellow-100 rounded-lg">
-              <div className="w-6 h-6 bg-yellow-500 rounded-full"></div>
+            <div className="p-2 sm:p-3 bg-yellow-100 rounded-lg">
+              <div className="w-4 h-4 sm:w-6 sm:h-6 bg-yellow-500 rounded-full"></div>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-xl border border-orange-100 p-4">
+        <div className="bg-white rounded-xl border border-orange-100 p-3 sm:p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Total Value</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-xs sm:text-sm text-gray-600">Total Value</p>
+              <p className="text-lg sm:text-2xl font-bold text-gray-900">
                 ${products.reduce((sum, p) => sum + (p.price * (p.stock || 0)), 0).toLocaleString()}
               </p>
             </div>
-            <div className="p-3 bg-blue-100 rounded-lg">
-              <div className="w-6 h-6 bg-blue-500 rounded-full"></div>
+            <div className="p-2 sm:p-3 bg-blue-100 rounded-lg">
+              <div className="w-4 h-4 sm:w-6 sm:h-6 bg-blue-500 rounded-full"></div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl border border-orange-100 p-6">
+      <div className="bg-white rounded-xl border border-orange-100 p-4 sm:p-6">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -340,7 +340,7 @@ export default function Products() {
               placeholder="Search products..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 pr-4 py-2 w-full border border-orange-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              className="pl-10 pr-4 py-2 w-full border border-orange-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm sm:text-base"
             />
           </div>
           <div className="flex items-center space-x-2">
@@ -348,7 +348,7 @@ export default function Products() {
             <select
               value={filterCategory}
               onChange={(e) => setFilterCategory(e.target.value)}
-              className="border border-orange-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              className="border border-orange-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm sm:text-base"
             >
               {categories.map(category => (
                 <option key={category} value={category}>
@@ -361,17 +361,17 @@ export default function Products() {
       </div>
 
       {/* Products Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
         {filteredProducts.map((product) => (
           <div key={product.id} className="bg-white rounded-xl border border-orange-100 overflow-hidden hover:shadow-lg transition-all duration-300">
-            <div className="h-48 bg-gray-100 overflow-hidden">
+            <div className="h-40 sm:h-48 bg-gray-100 overflow-hidden">
               <img 
                 src={product.image} 
                 alt={product.name}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <div className="p-4">
+            <div className="p-3 sm:p-4">
               <div className="flex items-start justify-between mb-2">
                 <h3 className="font-semibold text-gray-900 text-sm">{product.name}</h3>
                 <button className="p-1 hover:bg-gray-100 rounded">
@@ -380,7 +380,7 @@ export default function Products() {
               </div>
               <p className="text-xs text-gray-600 mb-2">{product.category.charAt(0).toUpperCase() + product.category.slice(1).replace('-', ' ')}</p>
               <div className="flex items-center justify-between mb-3">
-                <span className="text-lg font-bold text-gray-900">${product.price}</span>
+                <span className="text-base sm:text-lg font-bold text-gray-900">${product.price}</span>
                 <span className={`text-xs px-2 py-1 rounded-full ${
                   product.status === 'Active' 
                     ? 'bg-green-100 text-green-800' 
@@ -390,7 +390,7 @@ export default function Products() {
                 </span>
               </div>
               <p className="text-xs text-gray-600 mb-3">Stock: {product.stock || 0}</p>
-              <div className="flex space-x-2">
+              <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
                 <button 
                   onClick={() => handleEditProduct(product)}
                   className="flex-1 bg-orange-100 text-orange-600 px-3 py-2 rounded-lg hover:bg-orange-200 transition-colors text-xs flex items-center justify-center space-x-1"
@@ -422,8 +422,8 @@ export default function Products() {
       </div>
 
       {filteredProducts.length === 0 && (
-        <div className="bg-white rounded-xl border border-orange-100 p-12 text-center">
-          <p className="text-gray-500">No products found matching your criteria.</p>
+        <div className="bg-white rounded-xl border border-orange-100 p-8 sm:p-12 text-center">
+          <p className="text-gray-500 text-sm sm:text-base">No products found matching your criteria.</p>
           <button 
             onClick={() => setShowAddModal(true)}
             className="mt-4 bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors flex items-center space-x-2 mx-auto"

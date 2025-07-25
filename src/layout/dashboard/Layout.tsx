@@ -13,7 +13,7 @@ export default function Dashboard_Layout() {
       <div className="lg:ml-64 min-h-screen">
         <Header onMenuToggle={() => setSidebarOpen(true)} />
         
-        <main className="p-6">
+        <main className="p-4 sm:p-6">
           <Outlet />
         </main>
       </div>
