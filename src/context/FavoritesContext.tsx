@@ -26,7 +26,6 @@ interface FavoritesProviderProps {
 export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }) => {
   const [favorites, setFavorites] = useState<Product[]>([]);
 
-  // Load favorites from localStorage on component mount
   useEffect(() => {
     try {
       const savedFavorites = localStorage.getItem('favorites');
@@ -40,7 +39,6 @@ export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }
     }
   }, []);
 
-  // Save favorites to localStorage whenever favorites change
   useEffect(() => {
     try {
       localStorage.setItem('favorites', JSON.stringify(favorites));

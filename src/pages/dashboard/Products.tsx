@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Plus, Search, Filter, MoreVertical, Edit, Trash2, Upload, X, Image as ImageIcon } from 'lucide-react';
 import { products as productData, type Product as BaseProduct } from '@/data/products';
 
-// Extended Product interface for admin functionality
 interface AdminProduct extends BaseProduct {
   status: 'Active' | 'Inactive';
 }
@@ -14,7 +13,6 @@ export default function Products() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>('');
 
-  // Transform product data to include status and format price
   const transformedProductData: AdminProduct[] = productData.map(product => ({
     ...product,
     status: (product.stock && product.stock > 0) ? 'Active' : 'Inactive' as 'Active' | 'Inactive'
@@ -67,7 +65,6 @@ export default function Products() {
 
     setProducts([...products, product]);
     
-    // Reset form
     setNewProduct({
       name: '',
       category: 'bedroom',
@@ -88,7 +85,6 @@ export default function Products() {
   };
 
   const handleEditProduct = (product: AdminProduct) => {
-    // Set the form with existing product data for editing
     setNewProduct({
       name: product.name,
       category: product.category,
@@ -126,7 +122,6 @@ export default function Products() {
           </div>
 
           <form onSubmit={handleAddProduct} className="p-4 sm:p-6 space-y-4 sm:space-y-6">
-            {/* Image Upload Section */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">Product Image</label>
               <div className="flex items-center space-x-4">
@@ -157,7 +152,6 @@ export default function Products() {
               </div>
             </div>
 
-            {/* Product Details */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Product Name *</label>
@@ -240,7 +234,6 @@ export default function Products() {
               />
             </div>
 
-            {/* Form Actions */}
             <div className="flex justify-end space-x-3 pt-4 border-t border-orange-100">
               <button
                 type="button"
@@ -265,7 +258,6 @@ export default function Products() {
 
   return (
     <div className="space-y-4 sm:space-y-6">
-      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Products</h1>
@@ -280,7 +272,6 @@ export default function Products() {
         </button>
       </div>
 
-      {/* Stats Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <div className="bg-white rounded-xl border border-orange-100 p-3 sm:p-4">
           <div className="flex items-center justify-between">
@@ -330,7 +321,6 @@ export default function Products() {
         </div>
       </div>
 
-      {/* Filters */}
       <div className="bg-white rounded-xl border border-orange-100 p-4 sm:p-6">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="relative flex-1">
@@ -360,7 +350,6 @@ export default function Products() {
         </div>
       </div>
 
-      {/* Products Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
         {filteredProducts.map((product) => (
           <div key={product.id} className="bg-white rounded-xl border border-orange-100 overflow-hidden hover:shadow-lg transition-all duration-300">
@@ -434,7 +423,6 @@ export default function Products() {
         </div>
       )}
 
-      {/* Add Product Modal */}
       <AddProductModal />
     </div>
   );

@@ -42,7 +42,6 @@ export default function Cart() {
       
       <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl">
         <div className="flex h-full flex-col">
-          {/* Header */}
           <div className="flex items-center justify-between p-4 border-b">
             <h2 className="text-lg font-semibold">Your Cart</h2>
             <button
@@ -55,7 +54,6 @@ export default function Cart() {
             </button>
           </div>
 
-          {/* Cart Items */}
           <div className="flex-1 overflow-y-auto p-4">
             {cartItems.length === 0 ? (
               <div className="text-center py-8">
@@ -110,7 +108,6 @@ export default function Cart() {
             )}
           </div>
 
-          {/* Footer */}
           {cartItems.length > 0 && (
             <div className="border-t p-4 space-y-4">
               <div className="space-y-2">

@@ -2,14 +2,14 @@ import { Settings, Save, LogOut, Trash2 } from 'lucide-react';
 
 interface AccountActionsProps {
   onSaveAllData: () => void;
-  onExportData: () => void;
+  // onExportData: () => void;
   onLogout: () => void;
   onDeleteAccount: () => void;
 }
 
 export default function AccountActions({
   onSaveAllData,
-  onExportData,
+  // onExportData,
   onLogout,
   onDeleteAccount
 }: AccountActionsProps) {
@@ -28,13 +28,13 @@ export default function AccountActions({
           Save All Profile Data
         </button>
         
-        <button
+        {/* <button
           onClick={onExportData}
           className="w-full bg-green-600 text-white py-3 px-4 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
         >
           <Settings className="w-4 h-4" />
           Export Profile Data
-        </button>
+        </button> */}
         
         <button
           onClick={onLogout}

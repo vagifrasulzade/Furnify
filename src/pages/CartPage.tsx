@@ -21,7 +21,6 @@ export default function CartPageRefactored() {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   
-  // Shipping options
   const shippingOptions: ShippingOption[] = [
     {
       id: 'standard',
@@ -60,14 +59,11 @@ export default function CartPageRefactored() {
     navigate("/products/all");
   };
 
-  // Calculate subtotal, tax, and total
   const subtotal = getTotalPrice();
   
-  // Get selected shipping option
   const selectedShippingOption = shippingOptions.find(option => option.id === selectedShipping);
   
-  // Shipping calculation
-  const freeShippingThreshold = 500; // Free shipping over $500
+  const freeShippingThreshold = 500; 
   const baseShippingCost = selectedShippingOption?.price || 25;
   const shipping = subtotal >= freeShippingThreshold ? 0 : baseShippingCost;
   
@@ -75,7 +71,6 @@ export default function CartPageRefactored() {
   const tax = subtotal * taxRate;
   const total = subtotal + shipping + tax;
 
-  // Amount needed for free shipping
   const amountForFreeShipping = freeShippingThreshold - subtotal;
 
   return (
@@ -87,7 +82,6 @@ export default function CartPageRefactored() {
           <EmptyCart onContinueShopping={handleContinueShopping} />
         ) : (
           <div className="lg:grid lg:grid-cols-3 lg:gap-8">
-            {/* Cart Items */}
             <div className="lg:col-span-2">
               <CartItemsList
                 cartItems={cartItems}
@@ -97,8 +91,7 @@ export default function CartPageRefactored() {
               />
             </div>
 
-            {/* Order Summary */}
-            <div className="lg:col-span-1 mt-8 lg:mt-0">
+\            <div className="lg:col-span-1 mt-8 lg:mt-0">
               <OrderSummary
                 subtotal={subtotal}
                 shipping={shipping}

@@ -10,12 +10,10 @@ import {
 } from 'lucide-react';
 
 export default function Dashboard() {
-  // Calculate real metrics from furniture products
   const totalInventoryValue = products.reduce((sum, product) => sum + (product.price * (product.stock || 0)), 0);
   const averagePrice = products.reduce((sum, product) => sum + product.price, 0) / products.length;
   const totalStock = products.reduce((sum, product) => sum + (product.stock || 0), 0);
   
-  // Realistic furniture business metrics
   const monthlyOrders = Math.floor(totalStock * 0.15); // Assuming 15% of stock sold monthly
   const monthlyRevenue = monthlyOrders * averagePrice;
   const activeCustomers = Math.floor(monthlyOrders * 0.8); // Assuming 80% repeat customers

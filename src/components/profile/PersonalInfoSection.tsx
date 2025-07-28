@@ -59,7 +59,6 @@ export default function PersonalInfoSection({
         Personal Information
       </h3>
       
-      {/* Name */}
       <div className="mb-6">
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Full Name
@@ -105,7 +104,6 @@ export default function PersonalInfoSection({
         )}
       </div>
 
-      {/* Email */}
       <div className="mb-6">
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Email Address

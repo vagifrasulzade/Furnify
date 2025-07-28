@@ -54,7 +54,6 @@ export default function ProductDetail() {
     toggleFavorite(product);
   };
 
-  // Use product images or fallback to single image
   const images = product.images || [product.image];
   const totalMedia = images.length + (product.video ? 1 : 0);
 
@@ -66,7 +65,6 @@ export default function ProductDetail() {
     setSelectedImage((prev) => (prev === totalMedia - 1 ? 0 : prev + 1));
   };
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft') {
@@ -82,7 +80,6 @@ export default function ProductDetail() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {/* Back Button */}
       <button
         onClick={() => navigate(-1)}
         className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors"
@@ -92,7 +89,6 @@ export default function ProductDetail() {
       </button>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* Product Images & Video */}
         <div className="space-y-4">
           <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden relative group">
             {product.video && selectedImage === images.length ? (
@@ -112,7 +108,6 @@ export default function ProductDetail() {
               />
             )}
             
-            {/* Arrow Navigation Controls */}
             {totalMedia > 1 && (
               <>
                 <button
@@ -132,7 +127,6 @@ export default function ProductDetail() {
               </>
             )}
 
-            {/* Image Counter */}
             {totalMedia > 1 && (
               <div className="absolute top-4 right-4 bg-black/70 text-white text-sm px-3 py-1 rounded-full backdrop-blur-sm">
                 {selectedImage + 1} / {totalMedia}
@@ -140,7 +134,6 @@ export default function ProductDetail() {
             )}
           </div>
           
-          {/* Thumbnail Images & Video */}
           <div className="flex gap-4 overflow-x-auto">
             {images.map((image, index) => (
               <button
@@ -170,31 +163,26 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        {/* Product Info */}
         <div className="space-y-6">
           <div>
             <p className="text-sm text-gray-500 uppercase tracking-wide">{product.category.replace('-', ' ')}</p>
             <h1 className="text-3xl font-bold text-gray-900 mt-2">{product.name}</h1>
           </div>
 
-          {/* Rating */}
           <div className="flex items-center gap-4">
             <StarRating rating={product.rating || 0} size="md" />
             <span className="text-sm text-gray-600">({product.rating || 0} stars)</span>
           </div>
 
-          {/* Price */}
           <div className="text-3xl font-bold text-gray-900">
             ${product.price}
           </div>
 
-          {/* Description */}
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Description</h3>
             <p className="text-gray-600 leading-relaxed">{product.description}</p>
           </div>
 
-          {/* Stock Status */}
           <div className="flex items-center gap-2">
             <div className={`w-3 h-3 rounded-full ${product.stock && product.stock > 0 ? 'bg-green-500' : 'bg-red-500'}`}></div>
             <span className="text-sm text-gray-600">
@@ -202,7 +190,6 @@ export default function ProductDetail() {
             </span>
           </div>
 
-          {/* Features */}
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Features</h3>
             <ul className="space-y-2 text-gray-600">
@@ -225,7 +212,6 @@ export default function ProductDetail() {
             </ul>
           </div>
 
-          {/* Action Buttons */}
           <div className="flex gap-4 pt-6">
             <button
               onClick={handleToggleFavorite}

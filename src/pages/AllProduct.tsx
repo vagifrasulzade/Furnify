@@ -15,10 +15,8 @@ export default function AllProducts() {
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
   const [minRating, setMinRating] = useState<number>(0);
 
-  // Get unique categories
   const categories = [...new Set(products.map(product => product.category))];
 
-  // Filter and sort products
   const filteredProducts = useMemo(() => {
     console.log('Filtering with minRating:', minRating, 'type:', typeof minRating);
     let filtered = products.filter(product => {
@@ -36,7 +34,6 @@ export default function AllProducts() {
 
     console.log('Filtered products count:', filtered.length);
 
-    // Sort products
     filtered.sort((a, b) => {
       switch (sortBy) {
         case 'price-low':
@@ -78,14 +75,12 @@ export default function AllProducts() {
           />
 
           <div className="flex-1">
-            {/* Controls Bar */}
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 bg-gray-50 p-4 rounded-lg">
               <div className="flex items-center gap-4">
                 <span className="text-gray-600 font-medium">
                   {filteredProducts.length} {filteredProducts.length === 1 ? 'product' : 'products'} found
                 </span>
                 
-                {/* Sort Dropdown */}
                 <div className="flex items-center gap-2">
                   <SortAsc className="w-4 h-4 text-gray-500" />
                   <select
@@ -101,7 +96,6 @@ export default function AllProducts() {
                 </div>
               </div>
               
-              {/* View Mode Toggle */}
               <div className="flex items-center gap-2 bg-white rounded-lg p-1 border border-gray-300">
                 <button
                   onClick={() => setViewMode('grid')}

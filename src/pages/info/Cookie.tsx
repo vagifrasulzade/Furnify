@@ -11,7 +11,6 @@ export default function CookiesPolicy() {
         </div>
  
         <div className="text-gray-800 text-base leading-relaxed space-y-8">
-          {/* What are Cookies */}
           <div>
             <h2 className="text-2xl font-semibold mb-2">What are Cookies?</h2>
             <p>
@@ -20,7 +19,6 @@ export default function CookiesPolicy() {
             </p>
           </div>
  
-          {/* How We Use Cookies */}
           <div>
             <h2 className="text-2xl font-semibold mb-2">How We Use Cookies</h2>
             <p>We use cookies for various purposes:</p>
@@ -40,7 +38,6 @@ export default function CookiesPolicy() {
             </ul>
           </div>
  
-          {/* Managing Cookies */}
           <div>
             <h2 className="text-2xl font-semibold mb-2">Managing Cookies</h2>
             <p>

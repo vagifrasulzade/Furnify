@@ -33,7 +33,6 @@ export default function FiltersSidebar({
     <div className="lg:w-1/4">
       <div className="bg-white p-6 rounded-lg shadow-sm border">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Filters</h3>
-        {/* Search */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-2">Search</label>
           <div className="relative">
@@ -59,7 +58,6 @@ export default function FiltersSidebar({
           </div>
           
         </div>
-        {/* Price Range */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-2">Price Range</label>
           <div className="flex items-center gap-2 mb-2">
@@ -81,7 +79,6 @@ export default function FiltersSidebar({
             className="w-full"
           />
         </div>
-        {/* Categories */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-2">Categories</label>
           <div className="space-y-2">
@@ -111,7 +108,6 @@ export default function FiltersSidebar({
             ))}
           </div>
         </div>
-        {/* Star Rating Filter */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-2">Minimum Rating</label>
           <div className="space-y-2">

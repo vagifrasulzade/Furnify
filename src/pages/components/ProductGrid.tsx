@@ -15,7 +15,7 @@ export default function ProductGrid() {
   const [showActions, setShowActions] = useState<{[key: number]: boolean}>({});
 
   const handleAddToCart = async (product: Product) => {
-    if (addingProducts[product.id]) return; // Prevent double clicks
+    if (addingProducts[product.id]) return; 
     
     setAddingProducts(prev => ({ ...prev, [product.id]: true }));
     

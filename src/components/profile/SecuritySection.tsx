@@ -49,7 +49,6 @@ export default function SecuritySection({ onSavePassword, onError }: SecuritySec
         Security
       </h3>
       
-      {/* Password */}
       <div className="mb-6">
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Password

@@ -32,9 +32,7 @@ interface AuthProviderProps {
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
 
-  // Initialize admin user and load user from localStorage on component mount
   useEffect(() => {
-    // Initialize or update admin user
     const users = JSON.parse(localStorage.getItem('users') || '[]');
     const adminIndex = users.findIndex((u: User) => u.email === 'admin@example.com');
     
@@ -45,15 +43,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     };
 
     if (adminIndex !== -1) {
-      // Update existing admin user
       users[adminIndex] = adminUser;
     } else {
-      // Add new admin user
       users.push(adminUser);
     }
     localStorage.setItem('users', JSON.stringify(users));
 
-    // Load current user from localStorage
     const savedUser = localStorage.getItem('currentUser');
     if (savedUser) {
       try {
@@ -92,7 +87,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     try {
       const users = JSON.parse(localStorage.getItem('users') || '[]');
       
-      // Check if user already exists
       if (users.some((u: User) => u.email === email)) {
         return false;
       }
@@ -113,7 +107,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setCurrentUser(updatedUser);
       localStorage.setItem('currentUser', JSON.stringify(updatedUser));
       
-      // Also update in users array
       const users = JSON.parse(localStorage.getItem('users') || '[]');
       const updatedUsers = users.map((user: User) => 
         user.email === currentUser.email ? updatedUser : user

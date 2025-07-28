@@ -19,7 +19,6 @@ export default function AddressSection({ addressInfo, onSaveAddress, onError }: 
   const [isEditing, setIsEditing] = useState(false);
   const [editedAddress, setEditedAddress] = useState(addressInfo);
 
-  // Generate country options
   const generateCountryOptions = () => {
     return [
       { value: "AF", label: "Afghanistan" },

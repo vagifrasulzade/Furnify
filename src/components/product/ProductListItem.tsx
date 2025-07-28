@@ -20,7 +20,6 @@ export default function ProductListItem({ product }: ProductListItemProps) {
   const isLiked = isFavorite(String(product.id));
 
   const handleAddToCart = async () => {
-    // Don't add to cart if product is out of stock
     if (!product.stock || product.stock <= 0) {
       return;
     }
@@ -34,7 +33,6 @@ export default function ProductListItem({ product }: ProductListItemProps) {
       image: product.image
     });
     
-    // Show success state for 1 second
     setTimeout(() => {
       setIsAdding(false);
     }, 1000);
@@ -65,7 +63,6 @@ export default function ProductListItem({ product }: ProductListItemProps) {
             />
           </button>
           
-          {/* Quick Actions Menu */}
           <div className="absolute top-3 right-3 z-10">
             <button
               onClick={() => setShowActions(!showActions)}
@@ -100,7 +97,6 @@ export default function ProductListItem({ product }: ProductListItemProps) {
             <h3 className="text-xl font-semibold text-gray-900 mb-2">{product.name}</h3>
             <p className="text-gray-600 mb-4">{product.description}</p>
             
-            {/* Star Rating */}
             <div className="mb-4">
               <StarRating rating={product.rating || 0} size="md" />
             </div>

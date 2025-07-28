@@ -6,7 +6,6 @@ import { Heart } from "lucide-react";
 export default function Favorites() {
   const { favorites } = useFavorites();
 
-  // Debug logging
   console.log('Favorites page - favorites count:', favorites.length);
   console.log('Favorites data:', favorites);
 

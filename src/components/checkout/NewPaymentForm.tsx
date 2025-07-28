@@ -20,7 +20,6 @@ export default function NewPaymentForm({ onSave, onCancel }: NewPaymentFormProps
     saveToProfile: true
   });
 
-  // Helper function to format card number
   const formatCardNumber = (value: string) => {
     const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
     const matches = v.match(/\d{4,16}/g);
@@ -36,16 +35,14 @@ export default function NewPaymentForm({ onSave, onCancel }: NewPaymentFormProps
     }
   };
 
-  // Generate year options (2025-2030)
   const generateYearOptions = () => {
     const years = [];
     for (let year = 2025; year <= 2030; year++) {
-      years.push(year.toString().slice(-2)); // Get last 2 digits
+      years.push(year.toString().slice(-2)); 
     }
     return years;
   };
 
-  // Generate month options
   const generateMonthOptions = () => {
     const months = [];
     for (let month = 1; month <= 12; month++) {
@@ -55,27 +52,23 @@ export default function NewPaymentForm({ onSave, onCancel }: NewPaymentFormProps
   };
 
   const handleSubmit = () => {
-    // Validate card number (should be 16 digits)
     const cardDigits = formData.cardNumber.replace(/\s/g, '');
     if (!cardDigits || cardDigits.length !== 16 || !/^\d{16}$/.test(cardDigits)) {
       alert('Card number must be exactly 16 digits');
       return;
     }
 
-    // Validate CVV (should be 3 digits)
     if (!formData.cvv || formData.cvv.length !== 3 || !/^\d{3}$/.test(formData.cvv)) {
       alert('CVV must be exactly 3 digits');
       return;
     }
 
-    // Validate expiry date format (MM/YY)
     const expiryPattern = /^(0[1-9]|1[0-2])\/([2-3][0-9])$/;
     if (!formData.expiryDate || !expiryPattern.test(formData.expiryDate)) {
       alert('Expiry date must be in MM/YY format');
       return;
     }
 
-    // Validate expiry date is not in the past
     const [month, year] = formData.expiryDate.split('/');
     const expiryDate = new Date(2000 + parseInt(year), parseInt(month) - 1);
     const now = new Date();
@@ -111,7 +104,7 @@ export default function NewPaymentForm({ onSave, onCancel }: NewPaymentFormProps
               }
             }}
             className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-            maxLength={19} // 16 digits + 3 spaces
+            maxLength={19} 
           />
         </div>
         

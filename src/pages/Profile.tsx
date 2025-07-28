@@ -19,7 +19,6 @@ export default function Profile() {
   const { currentUser, logout, updateUser } = useAuth();
   const navigate = useNavigate();
   
-  // Payment info state
   const [paymentInfo, setPaymentInfo] = useState<PaymentInfo>({
     cardNumber: '•••• •••• •••• 1234',
     cardHolder: currentUser?.name || '',
@@ -27,7 +26,6 @@ export default function Profile() {
     cvv: '•••'
   });
   
-  // Address info state
   const [addressInfo, setAddressInfo] = useState<AddressInfo>({
     street: '123 Main Street',
     city: 'New York',
@@ -36,22 +34,18 @@ export default function Profile() {
     country: 'United States'
   });
   
-  // Messages and modal state
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
-  // Load saved data when component mounts or user changes
   useEffect(() => {
     if (currentUser?.email) {
-      // Load saved payment info
       const paymentKey = `paymentInfo_${currentUser.email}`;
       const savedPaymentInfo = localStorage.getItem(paymentKey);
       if (savedPaymentInfo) {
         setPaymentInfo(JSON.parse(savedPaymentInfo));
       }
 
-      // Load saved address info
       const addressKey = `addressInfo_${currentUser.email}`;
       const savedAddressInfo = localStorage.getItem(addressKey);
       if (savedAddressInfo) {
@@ -60,7 +54,6 @@ export default function Profile() {
     }
   }, [currentUser]);
 
-  // Auto-save profile data whenever user info changes
   useEffect(() => {
     if (currentUser) {
       const profileData = {
@@ -93,7 +86,6 @@ export default function Profile() {
   const handleSaveName = (name: string) => {
     updateUser({ name });
     
-    // Save to localStorage for persistence
     const profileKey = `profile_${currentUser?.email}`;
     const existingProfile = JSON.parse(localStorage.getItem(profileKey) || '{}');
     const updatedProfile = {
@@ -110,7 +102,6 @@ export default function Profile() {
   const handleSaveEmail = (email: string) => {
     updateUser({ email });
     
-    // Save to localStorage for persistence
     const profileKey = `profile_${currentUser?.email}`;
     const existingProfile = JSON.parse(localStorage.getItem(profileKey) || '{}');
     const updatedProfile = {
@@ -131,10 +122,8 @@ export default function Profile() {
       return;
     }
     
-    // Update password
     updateUser({ password: newPassword });
     
-    // Save password change to localStorage
     const profileKey = `profile_${currentUser?.email}`;
     const existingProfile = JSON.parse(localStorage.getItem(profileKey) || '{}');
     const updatedProfile = {
@@ -150,15 +139,12 @@ export default function Profile() {
   };
 
   const handleSavePayment = (payment: PaymentInfo) => {
-    // Save payment info to localStorage
     const paymentKey = `paymentInfo_${currentUser?.email}`;
     localStorage.setItem(paymentKey, JSON.stringify(payment));
 
-    // Save to payment methods for checkout integration
     const paymentMethodsKey = `paymentMethods_${currentUser?.email}`;
     const existingMethods = JSON.parse(localStorage.getItem(paymentMethodsKey) || '[]');
     
-    // Check if this card already exists
     const cardExists = existingMethods.find((method: any) => 
       method.cardNumber.slice(-4) === payment.cardNumber.slice(-4)
     );
@@ -184,15 +170,12 @@ export default function Profile() {
   };
 
   const handleSaveAddress = (address: AddressInfo) => {
-    // Save address info to localStorage
     const addressKey = `addressInfo_${currentUser?.email}`;
     localStorage.setItem(addressKey, JSON.stringify(address));
     
-    // Save to addresses for checkout integration
     const addressesKey = `addresses_${currentUser?.email}`;
     const existingAddresses = JSON.parse(localStorage.getItem(addressesKey) || '[]');
     
-    // Check if this address already exists
     const addressExists = existingAddresses.find((addr: any) => 
       addr.street === address.street && 
       addr.city === address.city && 
@@ -213,7 +196,6 @@ export default function Profile() {
       existingAddresses.push(newAddress);
       localStorage.setItem(addressesKey, JSON.stringify(existingAddresses));
 
-      // Also add as billing address
       const billingAddress = { ...newAddress, id: (Date.now() + 1).toString(), type: 'billing' };
       existingAddresses.push(billingAddress);
       localStorage.setItem(addressesKey, JSON.stringify(existingAddresses));
@@ -225,7 +207,6 @@ export default function Profile() {
     setTimeout(() => setSuccess(''), 3000);
   };
 
-  // Save all profile data function
   const handleSaveAllData = () => {
     if (!currentUser?.email) return;
 
@@ -240,14 +221,12 @@ export default function Profile() {
       version: '1.0'
     };
 
-    // Save complete profile data
     localStorage.setItem(`completeProfile_${currentUser.email}`, JSON.stringify(completeProfileData));
     
     setSuccess('All profile data saved successfully!');
     setTimeout(() => setSuccess(''), 3000);
   };
 
-  // Export profile data
   const handleExportData = () => {
     if (!currentUser?.email) return;
 
@@ -260,7 +239,6 @@ export default function Profile() {
         cardHolder: paymentInfo.cardHolder,
         cardNumber: paymentInfo.cardNumber,
         expiryDate: paymentInfo.expiryDate
-        // Note: CVV not included in export for security
       },
       address: addressInfo,
       exportDate: new Date().toISOString()
@@ -283,10 +261,8 @@ export default function Profile() {
   };
 
   const handleDeleteAccount = () => {
-    // In a real app, you'd call an API to delete the account
     logout();
     navigate('/');
-    // Clear user data
     localStorage.removeItem('users');
     localStorage.removeItem('currentUser');
   };
@@ -304,7 +280,6 @@ export default function Profile() {
         <div className="bg-white rounded-lg shadow-lg border overflow-hidden">
           <ProfileHeader />
 
-          {/* Content */}
           <div className="p-6">
             <ProfileCompletion
               userName={currentUser.name}
@@ -313,7 +288,6 @@ export default function Profile() {
               hasAddressInfo={addressInfo.street !== '123 Main Street'}
             />
 
-            {/* Success/Error Messages */}
             {success && <AlertMessage type="success" message={success} />}
             {error && <AlertMessage type="error" message={error} />}
 

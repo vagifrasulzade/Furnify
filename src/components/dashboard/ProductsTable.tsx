@@ -11,7 +11,6 @@ interface Product {
   status: 'Active' | 'Inactive';
 }
 export default function ProductsTable() {
-  // Convert furniture products to table format and take first 6 items
   const initialProducts: Product[] = furnitureProducts.slice(0, 6).map(product => ({
     id: product.id,
     name: product.name.length > 40 ? product.name.substring(0, 40) + '...' : product.name,

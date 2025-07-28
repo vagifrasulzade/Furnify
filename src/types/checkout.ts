@@ -1,4 +1,3 @@
-// Checkout component exports
 export { default as CheckoutHeader } from '../components/checkout/CheckoutHeader';
 export { default as ProgressSteps } from '../components/checkout/ProgressSteps';
 export { default as ShippingStep } from '../components/checkout/ShippingStep';
@@ -9,7 +8,6 @@ export { default as NewAddressForm } from '../components/checkout/NewAddressForm
 export { default as OrderSummary } from '../components/checkout/OrderSummary';
 export { default as OrderComplete } from '../components/checkout/OrderComplete';
 
-// Shared TypeScript interfaces for checkout components
 export interface PaymentMethod {
   id: string;
   type: 'card';

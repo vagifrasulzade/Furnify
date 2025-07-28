@@ -20,14 +20,12 @@ export default function CheckoutPageRefactored() {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
 
-  // Redirect if not logged in
   useEffect(() => {
     if (!currentUser) {
       navigate('/auth/login');
     }
   }, [currentUser, navigate]);
 
-  // State for checkout process
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>('');
   const [selectedBillingAddress, setSelectedBillingAddress] = useState<string>('');
@@ -36,12 +34,10 @@ export default function CheckoutPageRefactored() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [orderComplete, setOrderComplete] = useState(false);
 
-  // Form states for new payment method and addresses
   const [showNewPaymentForm, setShowNewPaymentForm] = useState(false);
   const [showNewAddressForm, setShowNewAddressForm] = useState(false);
   const [addressType, setAddressType] = useState<'billing' | 'shipping'>('shipping');
 
-  // Load saved payment methods and addresses from localStorage
   const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>(() => {
     const saved = localStorage.getItem(`paymentMethods_${currentUser?.email}`);
     return saved ? JSON.parse(saved) : [];
@@ -52,13 +48,11 @@ export default function CheckoutPageRefactored() {
     return saved ? JSON.parse(saved) : [];
   });
 
-  // Calculate totals
   const subtotal = getTotalPrice();
   const shipping = subtotal >= 500 ? 0 : 25; // Free shipping over $500
   const tax = subtotal * 0.08; // 8% tax
   const total = subtotal + shipping + tax;
 
-  // Save payment method to profile
   const savePaymentMethod = (payment: Omit<PaymentMethod, 'id'>) => {
     const newMethod: PaymentMethod = {
       ...payment,
@@ -70,7 +64,6 @@ export default function CheckoutPageRefactored() {
     return newMethod.id;
   };
 
-  // Save address to profile
   const saveAddress = (address: Omit<Address, 'id'>) => {
     const newAddr: Address = {
       ...address,
@@ -82,7 +75,6 @@ export default function CheckoutPageRefactored() {
     return newAddr.id;
   };
 
-  // Handle new payment method submission
   const handleAddPaymentMethod = (paymentData: {
     cardNumber: string;
     expiryDate: string;
@@ -103,7 +95,6 @@ export default function CheckoutPageRefactored() {
     setShowNewPaymentForm(false);
   };
 
-  // Handle new address submission
   const handleAddAddress = (addressData: {
     street: string;
     city: string;
@@ -131,20 +122,16 @@ export default function CheckoutPageRefactored() {
     setShowNewAddressForm(false);
   };
 
-  // Handle order submission
   const handlePlaceOrder = async () => {
     setIsProcessing(true);
     
-    // Simulate order processing
     await new Promise(resolve => setTimeout(resolve, 2000));
     
-    // Clear cart and show success
     clearCart();
     setOrderComplete(true);
     setIsProcessing(false);
   };
 
-  // Handle continue shopping
   const handleContinueShopping = () => {
     navigate('/products/all');
   };
@@ -156,16 +143,12 @@ export default function CheckoutPageRefactored() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <CheckoutHeader totalItems={getTotalItems()} totalPrice={total} />
 
-        {/* Progress Steps */}
         <ProgressSteps currentStep={currentStep} />
 
         <div className="lg:grid lg:grid-cols-3 lg:gap-8">
-          {/* Main Content */}
           <div className="lg:col-span-2">
-            {/* Step 1: Shipping Address */}
             {currentStep === 1 && (
               <>
                 <ShippingStep
@@ -179,7 +162,6 @@ export default function CheckoutPageRefactored() {
                   onContinue={() => setCurrentStep(2)}
                 />
                 
-                {/* New Address Form */}
                 {showNewAddressForm && addressType === 'shipping' && (
                   <NewAddressForm
                     addressType="shipping"
@@ -190,7 +172,6 @@ export default function CheckoutPageRefactored() {
               </>
             )}
 
-            {/* Step 2: Payment Method */}
             {currentStep === 2 && (
               <>
                 <PaymentStep
@@ -211,7 +192,6 @@ export default function CheckoutPageRefactored() {
                   onContinue={() => setCurrentStep(3)}
                 />
 
-                {/* New Payment Method Form */}
                 {showNewPaymentForm && (
                   <NewPaymentForm
                     onSave={handleAddPaymentMethod}
@@ -219,7 +199,6 @@ export default function CheckoutPageRefactored() {
                   />
                 )}
 
-                {/* New Billing Address Form */}
                 {showNewAddressForm && addressType === 'billing' && (
                   <NewAddressForm
                     addressType="billing"
@@ -230,7 +209,6 @@ export default function CheckoutPageRefactored() {
               </>
             )}
 
-            {/* Step 3: Review Order */}
             {currentStep === 3 && (
               <ReviewStep
                 cartItems={cartItems}
@@ -245,7 +223,6 @@ export default function CheckoutPageRefactored() {
             )}
           </div>
 
-          {/* Order Summary Sidebar */}
           <div className="lg:col-span-1 mt-8 lg:mt-0">
             <OrderSummary
               subtotal={subtotal}

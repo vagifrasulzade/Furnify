@@ -65,7 +65,6 @@ export default function ShippingStep({
         ))}
       </div>
 
-      {/* Add New Address Button */}
       <button
         onClick={onAddNewAddress}
         className="flex items-center gap-2 text-orange-500 hover:text-orange-600 transition-colors mb-6"
@@ -74,7 +73,6 @@ export default function ShippingStep({
         Add New Shipping Address
       </button>
 
-      {/* Continue Button */}
       <div className="mt-6 pt-6 border-t">
         <button
           onClick={onContinue}

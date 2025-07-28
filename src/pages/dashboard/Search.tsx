@@ -3,7 +3,6 @@ import { Search as SearchIcon, Filter, X } from 'lucide-react';
 import { products as productData, type Product as BaseProduct } from '@/data/products';
 import type { Order } from '@/types/user';
 
-// Extended Product interface for admin functionality
 interface AdminProduct extends BaseProduct {
   status: 'Active' | 'Inactive';
 }
@@ -16,7 +15,6 @@ export default function Search() {
     orders: Order[];
   }>({ products: [], orders: [] });
 
-  // Transform product data to include status and format for admin use
   const allProducts: AdminProduct[] = productData.map(product => ({
     ...product,
     status: (product.stock && product.stock > 0) ? 'Active' : 'Inactive' as 'Active' | 'Inactive'
@@ -72,13 +70,11 @@ export default function Search() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Search</h1>
         <p className="text-gray-600">Find products, orders, and more</p>
       </div>
 
-      {/* Search Bar */}
       <div className="bg-white rounded-xl border border-orange-100 p-6">
         <div className="relative">
           <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -100,7 +96,6 @@ export default function Search() {
           )}
         </div>
 
-        {/* Filters */}
         <div className="flex items-center space-x-4 mt-4">
           <Filter className="w-4 h-4 text-gray-400" />
           <div className="flex space-x-2">
@@ -121,7 +116,6 @@ export default function Search() {
         </div>
       </div>
 
-      {/* Results */}
       {query && (
         <div className="bg-white rounded-xl border border-orange-100 p-6">
           <div className="flex items-center justify-between mb-6">
@@ -141,7 +135,6 @@ export default function Search() {
             </div>
           ) : (
             <div className="space-y-6">
-              {/* Products Results */}
               {filteredResults.products.length > 0 && (
                 <div>
                   <h4 className="font-medium text-gray-900 mb-3">Products ({filteredResults.products.length})</h4>
@@ -169,7 +162,6 @@ export default function Search() {
                 </div>
               )}
 
-              {/* Orders Results */}
               {filteredResults.orders.length > 0 && (
                 <div>
                   <h4 className="font-medium text-gray-900 mb-3">Orders ({filteredResults.orders.length})</h4>
@@ -208,7 +200,6 @@ export default function Search() {
         </div>
       )}
 
-      {/* Search Tips */}
       {!query && (
         <div className="bg-white rounded-xl border border-orange-100 p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Search Tips</h3>

@@ -16,15 +16,11 @@ export default function Office() {
     const [minRating, setMinRating] = useState<number>(0);
     
     
-    // Get all categories for the filter
     const categories = [...new Set(products.map(product => product.category))];
 
-    // Show all categories but filter products based on selected category
-    const allCategories = categories; // Show all available categories
-     
+    const allCategories = categories; 
 
     const filteredProducts = useMemo(() => {
-        // For Office page, only show office products or all products based on filter
         let baseProducts = selectedCategory === 'all' ? products : 
                           products.filter(product => product.category === selectedCategory);
         

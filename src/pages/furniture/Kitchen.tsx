@@ -16,16 +16,13 @@ export default function Kitchen() {
     const [minRating, setMinRating] = useState<number>(0);
     
     
-    // Get all categories for the filter
     const categories = [...new Set(products.map(product => product.category))];
     const kitchenProducts = products.filter(product => product.category === 'kitchen');
 
-    // Show all categories but filter products based on selected category
-    const allCategories = categories; // Show all available categories
+    const allCategories = categories; 
      
 
     const filteredProducts = useMemo(() => {
-    // Start with all products or kitchen products based on selection
     let baseProducts = selectedCategory === 'all' ? products : 
                       selectedCategory === 'kitchen' ? kitchenProducts :
                       products.filter(product => product.category === selectedCategory);
@@ -77,14 +74,12 @@ export default function Kitchen() {
                     />
                     
                     <div className="flex-1">
-                        {/* Controls Bar */}
                         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 bg-gray-50 p-4 rounded-lg">
                             <div className="flex items-center gap-4">
                                 <span className="text-gray-600 font-medium">
                                     {filteredProducts.length} {filteredProducts.length === 1 ? 'product' : 'products'} found
                                 </span>
                                 
-                                {/* Sort Dropdown */}
                                 <div className="flex items-center gap-2">
                                     <SortAsc className="w-4 h-4 text-gray-500" />
                                     <select
@@ -100,7 +95,6 @@ export default function Kitchen() {
                                 </div>
                             </div>
                             
-                            {/* View Mode Toggle */}
                             <div className="flex items-center gap-2 bg-white rounded-lg p-1 border border-gray-300">
                                 <button
                                     onClick={() => setViewMode('grid')}

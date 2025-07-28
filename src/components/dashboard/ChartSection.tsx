@@ -3,7 +3,6 @@ import { TrendingUp, BarChart3 } from 'lucide-react';
 export default function ChartSection() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      {/* Chart Placeholder */}
       <div className="bg-white rounded-xl border border-orange-100 p-6">
         <div className="flex items-center justify-between mb-6">
           <div>
@@ -22,7 +21,6 @@ export default function ChartSection() {
         </div>
       </div>
 
-      {/* Activity List */}
       <div className="bg-white rounded-xl border border-orange-100 p-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-6">Recent Activity</h3>
         <div className="space-y-4">

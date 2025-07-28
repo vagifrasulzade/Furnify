@@ -50,7 +50,6 @@ export default function Products() {
 
     return(
         <div className="space-y-6">
-            {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-2xl font-bold text-gray-900">Products</h1>
@@ -65,7 +64,6 @@ export default function Products() {
                 </button>
             </div>
 
-            {/* Filters */}
             <div className="bg-white p-6 rounded-lg shadow-sm border">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
                     <div className="flex items-center space-x-4">
@@ -100,7 +98,6 @@ export default function Products() {
                 </div>
             </div>
 
-            {/* Products Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                 {filteredProducts.map((product) => {
                     const stockInfo = getStockStatus(product.stock);
@@ -160,7 +157,6 @@ export default function Products() {
                 })}
             </div>
 
-            {/* Empty State */}
             {filteredProducts.length === 0 && (
                 <div className="bg-white rounded-lg shadow-sm border p-12">
                     <div className="text-center">

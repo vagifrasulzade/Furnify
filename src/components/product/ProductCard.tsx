@@ -19,7 +19,6 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const isLiked = isFavorite(String(product.id));
 
-  // Get all available images for this product
   const allImages = product.images || [product.image];
   const hasMultipleImages = allImages.length > 1;
 
@@ -34,7 +33,6 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   const handleAddToCart = async () => {
-    // Don't add to cart if product is out of stock
     if (!product.stock || product.stock <= 0) {
       return;
     }
@@ -48,7 +46,6 @@ export default function ProductCard({ product }: ProductCardProps) {
       image: product.image
     });
     
-    // Show success state for 1 second
     setTimeout(() => {
       setIsAdding(false);
     }, 1000);
@@ -67,7 +64,6 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border group relative">
       <div className="relative overflow-hidden">
-        {/* Favorite Button */}
         <button
           onClick={handleToggleFavorite}
           className="absolute top-3 left-3 z-10 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-110"
@@ -93,7 +89,6 @@ export default function ProductCard({ product }: ProductCardProps) {
             loading="lazy"
           />
           
-          {/* Arrow Navigation - Only show if multiple images */}
           {hasMultipleImages && (
             <>
               <button
@@ -113,7 +108,6 @@ export default function ProductCard({ product }: ProductCardProps) {
             </>
           )}
 
-          {/* Image Dots Indicator */}
           {hasMultipleImages && (
             <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1 z-10">
               {allImages.map((_, index) => (
@@ -133,7 +127,6 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
           )}
           
-          {/* Media Indicator */}
           {(product.images && product.images.length > 1) || product.video ? (
             <div className="absolute top-3 right-3 flex gap-1 z-10">
               {product.images && product.images.length > 1 && (
@@ -156,7 +149,6 @@ export default function ProductCard({ product }: ProductCardProps) {
           <h3 className="text-lg font-bold text-gray-900 mt-1 line-clamp-2 hover:text-orange-600 transition-colors cursor-pointer" onClick={handleQuickView}>{product.name}</h3>
         </div>
         
-        {/* Star Rating */}
         <div className="mb-4">
           <StarRating rating={product.rating || 0} size="sm" />
         </div>

@@ -40,14 +40,12 @@ function Header () {
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-            {/* Logo */}
             <div className="flex items-center">
                 <Link to="/" className='flex-shrink-0'>
                 <img src={Logo} alt="Furnity Logo" className='h-16 mb-4'/>
                 </Link>
             </div>
 
-            {/* Desktop Navigation */}
             <nav className='hidden lg:flex space-x-8'>
               <Link  to="/products/bedroom" className="nav-link">Bedroom</Link>
               <Link  to="/products/living-room" className="nav-link">Living Room</Link>
@@ -57,9 +55,7 @@ function Header () {
               <Link  to="/products/sofa" className="nav-link">Sofa</Link>
             </nav>
 
-          {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            {/* Search */}
             <div className="relative">
               {isSearchOpen && (
                 <form onSubmit={handleSearch} className="absolute right-0 top-1/2 transform -translate-y-1/2">
@@ -85,7 +81,6 @@ function Header () {
               </button>
             </div>
 
-            {/* Favorites */}
             <Link to="/favorites" className="relative p-2 text-gray-600 hover:text-orange-500 transition-colors" title="Favorites">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -97,7 +92,6 @@ function Header () {
                 )}
             </Link>
 
-            {/* Cart */}
             <Link to="/cart" className="relative p-2 text-gray-600 hover:text-orange-500 transition-colors" title="Cart">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l-2.5 5m0 0L9 21h6m-6-8h6" />
@@ -109,7 +103,6 @@ function Header () {
               )}
             </Link>
 
-            {/* User Profile/Login */}
             {currentUser ? (
               <div className="relative group">
                 <button className="flex items-center space-x-2 text-gray-600 hover:text-orange-500 transition-colors">
@@ -145,7 +138,7 @@ function Header () {
 
           {/* Mobile Actions */}
           <div className="md:hidden flex items-center space-x-2">
-            {/* Mobile Search */}
+            
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               className="p-2 text-gray-600 hover:text-orange-500 transition-colors"
@@ -154,7 +147,6 @@ function Header () {
               <Search className="w-5 h-5" />
             </button>
 
-            {/* Mobile Cart */}
             <Link to="/cart" className="relative p-2 text-gray-600 hover:text-orange-500 transition-colors" title="Cart">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l-2.5 5m0 0L9 21h6m-6-8h6" />
@@ -166,7 +158,6 @@ function Header () {
               )}
             </Link>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 text-gray-600 hover:text-orange-500 transition-colors"
@@ -181,7 +172,6 @@ function Header () {
           </div>
         </div>
 
-        {/* Mobile Search Bar */}
         {isSearchOpen && (
           <div className="md:hidden pb-4">
             <form onSubmit={handleSearch} className="w-full">
@@ -198,11 +188,9 @@ function Header () {
         )}
       </div>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200">
           <div className="px-4 py-6 space-y-4">
-            {/* Mobile Navigation */}
             <nav className="space-y-4">
               <Link 
                 to="/products/bedroom" 
@@ -248,7 +236,6 @@ function Header () {
               </Link>
             </nav>
 
-            {/* Mobile User Actions */}
             <div className="pt-4 border-t border-gray-200 space-y-4">
               <Link 
                 to="/favorites" 

@@ -59,7 +59,6 @@ export default function PaymentStep({
         Payment Method
       </h2>
 
-      {/* Saved Payment Methods */}
       <div className="space-y-4 mb-6">
         {paymentMethods.map((method) => (
           <label key={method.id} className="flex items-start space-x-3 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
@@ -91,7 +90,6 @@ export default function PaymentStep({
         ))}
       </div>
 
-      {/* Add New Payment Method Button */}
       <button
         onClick={onAddNewPayment}
         className="flex items-center gap-2 text-orange-500 hover:text-orange-600 transition-colors mb-8"
@@ -100,7 +98,6 @@ export default function PaymentStep({
         Add New Payment Method
       </button>
 
-      {/* Billing Address */}
       <div className="pt-6 border-t">
         <h3 className="text-lg font-medium text-gray-900 mb-4">Billing Address</h3>
         
@@ -145,7 +142,6 @@ export default function PaymentStep({
         )}
       </div>
 
-      {/* Navigation Buttons */}
       <div className="mt-6 pt-6 border-t flex space-x-4">
         <button
           onClick={onBack}

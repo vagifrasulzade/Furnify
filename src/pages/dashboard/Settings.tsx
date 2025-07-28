@@ -34,14 +34,12 @@ export default function Settings() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
         <p className="text-gray-600">Manage your account preferences and security</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Notifications */}
         <div className="bg-white rounded-xl border border-orange-100 p-6">
           <div className="flex items-center space-x-3 mb-6">
             <div className="p-2 bg-orange-100 rounded-lg">
@@ -81,7 +79,6 @@ export default function Settings() {
           </div>
         </div>
 
-        {/* Security */}
         <div className="bg-white rounded-xl border border-orange-100 p-6">
           <div className="flex items-center space-x-3 mb-6">
             <div className="p-2 bg-orange-100 rounded-lg">
@@ -142,7 +139,6 @@ export default function Settings() {
           </div>
         </div>
 
-        {/* Change Password */}
         <div className="bg-white rounded-xl border border-orange-100 p-6">
           <div className="flex items-center space-x-3 mb-6">
             <div className="p-2 bg-orange-100 rounded-lg">
@@ -199,7 +195,6 @@ export default function Settings() {
           </div>
         </div>
 
-        {/* Preferences */}
         <div className="bg-white rounded-xl border border-orange-100 p-6">
           <div className="flex items-center space-x-3 mb-6">
             <div className="p-2 bg-orange-100 rounded-lg">
@@ -244,7 +239,6 @@ export default function Settings() {
         </div>
       </div>
 
-      {/* Save All Settings */}
       <div className="flex justify-end">
         <button className="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-colors flex items-center space-x-2">
           <Save className="w-5 h-5" />

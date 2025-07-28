@@ -17,7 +17,6 @@ export default function Profile() {
   });
 
   const handleSave = () => {
-    // Here you would typically save to your backend
     setIsEditing(false);
   };
 
@@ -27,14 +26,12 @@ export default function Profile() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Profile</h1>
         <p className="text-gray-600">Manage your account settings and preferences</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Profile Card */}
         <div className="lg:col-span-1">
           <div className="bg-white rounded-xl border border-orange-100 p-6">
             <div className="text-center">
@@ -74,7 +71,6 @@ export default function Profile() {
           </div>
         </div>
 
-        {/* Profile Details */}
         <div className="lg:col-span-2">
           <div className="bg-white rounded-xl border border-orange-100 p-6">
             <div className="flex items-center justify-between mb-6">

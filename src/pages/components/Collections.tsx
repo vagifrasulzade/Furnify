@@ -20,7 +20,7 @@ export default function Collections(){
     : products.filter((product: Product) => product.category === activeCategory);
 
     const handleAddToCart = async (product: Product) => {
-      if (addingProducts[product.id]) return; // Prevent double clicks
+      if (addingProducts[product.id]) return; 
       
       setAddingProducts(prev => ({ ...prev, [product.id]: true }));
       
@@ -33,7 +33,6 @@ export default function Collections(){
           image: product.image
         });
         
-        // Show success state for 1.5 seconds
         setTimeout(() => {
           setAddingProducts(prev => ({ ...prev, [product.id]: false }));
         }, 1500);
@@ -48,7 +47,6 @@ export default function Collections(){
     };
 
 
-    // Close all action menus when clicking outside
     const handleCloseActions = () => {
       setShowActions({});
     };
@@ -67,7 +65,6 @@ export default function Collections(){
               </p>
             </div>
 
-            {/* Category Tabs */}
             <div className="flex flex-wrap justify-center gap-4 mb-12">
               {categories.map((category) => (
                 <button
@@ -84,7 +81,6 @@ export default function Collections(){
               ))}
             </div>
 
-            {/* Products Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {filteredProducts.map((product) => {
                 const isLiked = isFavorite(String(product.id));
@@ -93,7 +89,6 @@ export default function Collections(){
                 return (
                   <div key={product.id} className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border group relative">
                     <div className="relative overflow-hidden">
-                      {/* Favorite Heart Button */}
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
@@ -128,7 +123,6 @@ export default function Collections(){
                         <h3 className="text-lg font-bold text-gray-900 mt-1 line-clamp-2 hover:text-orange-600 transition-colors cursor-pointer" onClick={() => handleQuickView(product.id)}>{product.name}</h3>
                       </div>
                       
-                      {/* Star Rating */}
                       <div className="mb-4">
                         <StarRating rating={product.rating || 0} size="sm" />
                       </div>

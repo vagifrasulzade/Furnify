@@ -20,7 +20,6 @@ export default function LoginForm() {
     try {
       const success = login(email, password);
       if (success) {
-        // Check if user is admin and redirect accordingly
         if (email === 'admin@example.com') {
           navigate("/admin");
         } else {

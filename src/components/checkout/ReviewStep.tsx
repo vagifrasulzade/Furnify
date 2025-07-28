@@ -60,7 +60,6 @@ export default function ReviewStep({
         Review Your Order
       </h2>
 
-      {/* Order Items */}
       <div className="mb-6">
         <h3 className="font-medium text-gray-900 mb-4">Order Items</h3>
         <div className="space-y-4">
@@ -83,7 +82,6 @@ export default function ReviewStep({
         </div>
       </div>
 
-      {/* Selected Addresses and Payment */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         <div>
           <h3 className="font-medium text-gray-900 mb-2">Shipping Address</h3>
@@ -108,7 +106,6 @@ export default function ReviewStep({
         </div>
       </div>
 
-      {/* Navigation Buttons */}
       <div className="mt-6 pt-6 border-t flex space-x-4">
         <button
           onClick={onBack}
