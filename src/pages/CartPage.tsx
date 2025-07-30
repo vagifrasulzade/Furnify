@@ -91,7 +91,7 @@ export default function CartPageRefactored() {
               />
             </div>
 
-\            <div className="lg:col-span-1 mt-8 lg:mt-0">
+            <div className="lg:col-span-1 mt-8 lg:mt-0">
               <OrderSummary
                 subtotal={subtotal}
                 shipping={shipping}
